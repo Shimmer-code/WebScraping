@@ -105,7 +105,7 @@ for i in tqdm(w11):
     print(i)
     x3 = list(pseg.cut(x2))  # 分词+词性标注
 
-    # ==== 新增词频统计部分（改动点）====
+    # ==== 新增词频统计====
     word_freq = Counter((word.word, word.flag) for word in x3)  # 统计(词,词性)频率
 
     # 提取数据
@@ -121,7 +121,7 @@ for i in tqdm(w11):
     z1 = pd.DataFrame({'分词': words, '词性': pos_tags, '词频': freqs})
     z1 = z1.sort_values('词频', ascending=False)  # 按词频排序
 
-    # ==== 保存文件（文件名稍作修改）====
+    # ==== 保存文件====
     output_filename = f'D:/out2/{str(i)}-词频统计.xlsx'  
     z1.to_excel(output_filename, sheet_name='Sheet1', index=False)
 
